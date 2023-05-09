@@ -14,7 +14,7 @@ Have you ever been struggling to create a custom creature for your Pathfinder Ta
 
 * Secure login over HTTPS
 * Ability to create custom creature statistics
-* Ability to randomly create creature statistics (with the exclusion of actions, items, immunities, resistances, and weaknesses)
+* Ability to randomly create creature statistics (with the exclusion of actions, skills, items, immunities, resistances, and weaknesses)
 * Ability to save creatures to a user's personal database
 * Ability to view/edit/delete creatures already saved to a user's database
 * Ability to upload creatures to a forum
@@ -39,7 +39,7 @@ Have you ever been struggling to create a custom creature for your Pathfinder Ta
 
 ## HTML Deliverable
 
-Structure of the application:
+Structure of the application.
 
 * HTML pages - Four HTML pages (Login, Creature Creation, View User's Creature Database, Forum).
 * Links - The login page automatically links to the User's Creature Database page. The User's Creature Database page contains links for each creature the user has created, buttons to upload/view/create a creature. There is a menu bar at the top that links to the forum and login page.
@@ -50,7 +50,7 @@ Structure of the application:
 
 ## CSS Deliverable
 
-Application appearance:
+Application appearance.
 
 * Header, footer, and main content body.
 * Menu Bar elements.
@@ -60,7 +60,7 @@ Application appearance:
 
 ## JavaScript Deliverable
 
-For this deliverable I made my application functional to track and display a user's three votes.
+App functionality.
 
 * Login - When you press enter or the login button it takes you to the User's Creature Database page.
 * Creature Creation - When you press the save button, it saves all of the informaiton on the creature and stores it into that specific user's database
@@ -68,12 +68,46 @@ For this deliverable I made my application functional to track and display a use
 * Database - Displays the user's saved creatures. Delete creatures. Load and edit preexisting creatures.
 * WebSocket - Upload's creatures to a real time forum where all other users can download.
 
-## Service deliverable
+## Service Deliverable
 
-For this deliverable I created an HTTP service to host my frontend and provide backend endpoints.
+HTTP service to host the frontend and provide backend for the web application.
 
-Node.js/Express HTTP service - done!
-Static middleware for frontend - done!
-Calls to third party endpoints - I didn't have time to implement this. 😔
-Backend service endpoints - Placeholders for login that stores the current user on the server. Endpoints for voting.
-Frontend calls service endpoints - I did this use the fetch function.
+* Node.js/Express HTTP service - in progress
+* Static middleware for frontend - in progress
+* Backend service endpoints - Placeholders for login that stores the current user on the server.
+* Frontend calls service endpoints - in progress
+
+** DB Deliverable
+
+Stores and retrieves data from MongoDB.
+
+* MongoDB Atlas database created - in progress
+* Endpoints for data - in progress
+* Stores data in MongoDB - in progress
+
+** Login Deliverable
+
+User registration and authentication.
+
+* User registration - Creates a new account in the database.
+* existing user - Verifies the user's name and password from data stored in the database
+* Use MongoDB to store credentials - done!
+* Restricts functionality - You cannot vote until you have logged in.
+
+## WebSocket Deliverable
+
+For this deliverable I enabled realtime reporting of votes from other users.
+
+* Backend listens for WebSocket connection - in progress
+* Frontend makes WebSocket connection - in progress
+* Data sent over WebSocket connection - in progress
+* WebSocket data displayed - Display all user uploaded creatures on the forum in realtime
+
+## React Deliverable
+
+For this deliverable I port the application over to React.
+
+* Bundled and transpiled - in progress
+* Components - Login, creature genorator page
+* Router - Routing between login and creature creator components.
+* Hooks - UseState to track changes of creature's statistics and saved creatures.
