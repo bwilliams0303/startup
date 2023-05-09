@@ -4,7 +4,7 @@ My notepad for **CS_260**. I can use these notes on my midterm and final.
 
 ## HTML
 
-`<a href="https://byu.edu">BYU</a>
+<a href="https://byu.edu">BYU</a>
 
 <img src="img_girl.jpg" alt="Girl in a jacket" width="500" height="600">
 
@@ -21,7 +21,7 @@ My notepad for **CS_260**. I can use these notes on my midterm and final.
     <td>data1</td>
     <td>data2</td>
   </tr>
-</table>`
+</table>
 
 
 ### Links
