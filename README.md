@@ -96,7 +96,7 @@ User registration and authentication.
 
 ## WebSocket Deliverable
 
-For this deliverable I enabled realtime reporting of votes from other users.
+Enables realtime reporting of uploaded creatures from other users.
 
 * Backend listens for WebSocket connection - in progress
 * Frontend makes WebSocket connection - in progress
@@ -105,7 +105,7 @@ For this deliverable I enabled realtime reporting of votes from other users.
 
 ## React Deliverable
 
-For this deliverable I port the application over to React.
+Ports the application over to React.
 
 * Bundled and transpiled - in progress
 * Components - Login, creature genorator page
