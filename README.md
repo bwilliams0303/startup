@@ -77,7 +77,7 @@ HTTP service to host the frontend and provide backend for the web application.
 * Backend service endpoints - Placeholders for login that stores the current user on the server.
 * Frontend calls service endpoints - in progress
 
-** DB Deliverable
+## DB Deliverable
 
 Stores and retrieves data from MongoDB.
 
