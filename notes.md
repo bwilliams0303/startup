@@ -4,8 +4,7 @@ My notepad for **CS_260**. I can use these notes on my midterm and final.
 
 ## HTML
 
-###Structure
-
+### Structure
 ```
 <a href="https://byu.edu">BYU</a>
 
@@ -27,7 +26,9 @@ My notepad for **CS_260**. I can use these notes on my midterm and final.
 </table>
 ```
 ### Input
+```
 
+```
 
 
 ### Links
