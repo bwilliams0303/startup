@@ -50,6 +50,8 @@ Structure of the application.
 * Database - A table to structure the user's preexisting created creatures. Button to save a creature to the database. Button to edit prexisting creature. Button to upload creature to forum. Button to delete creature from the database
 * WebSocket - A forum of other user's uploaded creatures. A popup structure to notify other users when someone uploads a new creature.
 
+View raw to see future deliverables
+
 <!-- ## CSS Deliverable
 
 Application appearance.
