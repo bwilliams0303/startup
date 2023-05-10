@@ -41,14 +41,14 @@ Have you ever been struggling to create a custom creature for your Pathfinder Ta
 
 Structure of the application.
 
-* HTML pages - Four HTML pages (Login, Creature Creation, View User's Creature Database, Forum).
-* Links - The login page automatically links to the User's Creature Database page. The User's Creature Database page contains links for each creature the user has created, buttons to upload/view/create a creature. There is a menu bar at the top that links to the forum and login page.
-* Text - Each creature contains saved statistics, descriptions, tags, and current inventory.
+* HTML pages - Four HTML pages (Index, Creature Creation, user_database, forum).
+* Links - Navigation menu that links to each of the HTML pages.
+* Text - Creature creator contains input form for statistics, descriptions, appearance, tags, inventory, and notes.
 * Login - Input box and submit button for login.
-* Database - The user's preexisting created creatures.
-* WebSocket - A forum of other user's uploaded creatures.
+* Database - A table to structure the user's preexisting created creatures. Button to save a creature to the database. Button to edit prexisting creature. Button to upload creature to forum. Button to delete creature from the database
+* WebSocket - A forum of other user's uploaded creatures. A popup structure to notify other users when someone uploads a new creature.
 
-## CSS Deliverable
+<!-- ## CSS Deliverable
 
 Application appearance.
 
@@ -110,4 +110,4 @@ Ports the application over to React.
 * Bundled and transpiled - in progress
 * Components - Login, creature genorator page
 * Router - Routing between login and creature creator components.
-* Hooks - UseState to track changes of creature's statistics and saved creatures.
+* Hooks - UseState to track changes of creature's statistics and saved creatures. -->
