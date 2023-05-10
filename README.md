@@ -1,6 +1,6 @@
 # Pathfinder Second Edition Creature Generator
 
-[startup.bwbyucs260.click](startup.bwbyucs260.click)
+[startup.bwbyucs260.click](https://startup.bwbyucs260.click/)
 
 ## Description Deliverable
 
