@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <html lang="en">
 
 	<head>
@@ -10,93 +12,271 @@
 	</head>
 
 	<body>
-		<!-- Use header, main, and footer elements to give semantic structure -->
 		<header>
 			<h1>Pathfinder 2e Creature Creator</h1>
 
 			<!-- Navigation elements -->
 			<nav>
-				<!-- Menu is a semantic alternative to <ul> that represents an interaction -->
 				<menu>
 					<li><a href="index.html">Home</a></li>
-					<li><a href="play.html">Play</a></li>
-					<li><a href="scores.html">Scores</a></li>
-					<li><a href="about.html">About</a></li>
+					<li><a href="creature_creator.html">Creature Creator</a></li>
+					<li><a href="user_database.html">My Creatures</a></li>
+					<li><a href="forum.html">Forum</a></li>
 				</menu>
 			</nav>
 
-			<!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
 			<hr />
 		</header>
 
 		<main>
-			<div class="players">
-				Player:
-				<span class="player-name">Mystery player</span>
-			</div>
-			<ul class="notification">
-				<li class="player-name">Tim started a new game</li>
-				<li class="player-name">Ada started a new game</li>
-				<li class="player-name">Tim scored 337</li>
-			</ul>
+			<form action="user_database.html" method="get">
+				<!-- If the user selects Weak or Elite adjustments, it will change statistics onClick -->
+				<fieldset name="creatureAdjust">
+					<label for="weakAdjust">Weak</label>
+					<input type="radio" id="weakAdjust" name="creatureAdjust" value="weakAdjustment" />
+					<label for="normalAdjust">Normal</label>
+					<input type="radio" id="normalAdjust" name="creatureAdjust" value="normalAdjustment" checked />
+					<label for="eliteAdjust">Elite</label>
+					<input type="radio" id="eliteAdjust" name="creatureAdjust" value="eliteAdjustment" />
+				</fieldset>
 
-			<!-- More formatting with old style HTML -->
-			<br />
+				<button type="submit" name="save" class="fa fa-save"></button><span><button type="button" name="random"
+						class="fa fa-dice"></button></span>
 
-			<div>
-				<label for="count">Score</label>
-				<input type="text" id="count" value="--" readonly />
-			</div>
+				<fieldset name="creatureBar">
+					<input type="text" id="creatureName" name="creatureName" placeholder="Creature Name" required />
+					<span>
+						<label for="creatureLevel">Level: </label>
+						<input type="number" id="creatureLevel" name="creatureLevel" placeholder="level" min="-2"
+							max="30" vaule="0" />
+					</span>
+				</fieldset>
 
-			<br />
+				<fieldset name="traits">
+					<select id="alignment" name="alignment">
+						<option>Lawful Good</option>
+						<option>Neutral Good</option>
+						<option>Chaotic Good</option>
+						<option>Lawful Neutral</option>
+						<option selected>True Neutral</option>
+						<option>Chaotic Neutral</option>
+						<option>Lawful Evil</option>
+						<option>True Evil</option>
+						<option>Chaotic Evil</option>
+					</select>
+					<select id="size" name="size">
+						<option>Tiny</option>
+						<option>Small</option>
+						<option selected>Medium</option>
+						<option>Large</option>
+						<option>Huge</option>
+					</select>
+					<span name="newTraits" id="newTraits" class="appending_traits">
+						<span>
+							<input type="text" name="trait[]" placeholder="new trait">
+						</span>
+						<!-- Can add and remove traits onClick of plus or minus sign -->
+						<span id="traitsAdd" class="fa fa-plus add"></span>
+						<span id="traitsMinus" class="fa fa-minus minus"></span>
+					</span>
+					<div id="languages" class="appending_languages">
+						<label for="languages">Languages</label>
+						<span>
+							<input type="text" name="language[]" placeholder="new language">
+						</span>
+						<!-- Can add and remove languages onClick of plus or minus sign -->
+						<span id="languagesAdd" class="fa fa-plus add"></span>
+						<span id="languagesMinus" class="fa fa-minus minus"></span>
+					</div>
+					<div id="speed">
+						<label for="speed">Speed</label>
+						<input type="text" id="speedInput" name="speed"></input><span style="margin-left:3px;">ft</span>
+					</div>
+				</fieldset>
 
-			<div>
-				<button>Reset</button>
-			</div>
+				<fieldset name="abilityScores">
+					<label for="abilityStr">STR</label>
+					<input type="number" name="abilityStr" id="abilityStr" value="0" min="-10" max="20">
+					<select id="strScaling" name="strScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="abilityDex">DEX</label>
+					<input type="number" name="abilityDex" id="abilityDex" value="0" min="-10" max="20">
+					<select id="dexScaling" name="dexScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="abilityCon">CON</label>
+					<input type="number" name="abilityCon" id="abilityCon" value="0" min="-10" max="20">
+					<select id="conScaling" name="conScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="abilityInt">INT</label>
+					<input type="number" name="abilityInt" id="abilityInt" value="0" min="-10" max="20">
+					<select id="intScaling" name="intScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="abilityWis">WIS</label>
+					<input type="number" name="abilityWis" id="abilityWis" value="0" min="-10" max="20">
+					<select id="intScaling" name="intScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="abilityCha">CHA</label>
+					<input type="number" name="abilityCha" id="abilityCha" value="0" min="-10" max="20">
+					<select id="chaScaling" name="chaScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+				</fieldset>
 
-			<br />
+				<fieldset name="statistics">
+					<label for="health">Health</label>
+					<input type="number" name="health" id="health" value="15" min="-50" max="100">
+					<select id="healthScaling" name="healthScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<br>
+					<label for="armorClass">AC</label>
+					<input type="number" name="armorClass" id="armorClass" value="15" min="-50" max="100">
+					<select id="acScaling" name="acScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<br>
+					<label for="perception">Perception</label>
+					<input type="number" name="perception" id="perception" value="2" min="-50" max="100">
+					<select id="conScaling" name="conScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+				</fieldset>
 
-			<div>
-				<table>
-					<tr>
-						<td>
-							<button>
-								<svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-									<!-- SVG
-                    M move <to x,y>
-                    Q quadratic curve <control point x,y> <to x,y>
-                -->
-									<path d="M 95,5 95,95 5,95 Q 5,5 95,5" fill="green" />
-								</svg>
-							</button>
-						</td>
-						<td>
-							<button>
-								<svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-									<path d="M5,5 5,95 95,95 Q 95,5 5,5" fill="red" />
-								</svg>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<button>
-								<svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-									<path d="M5,5 95,5 95,95 Q 5,95 5,5" fill="blue" />
-								</svg>
-							</button>
-						</td>
-						<td>
-							<button>
-								<svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
-									<path d="M95,5 5,5 5,95 Q 95,95 95,5" fill="yellow" />
-								</svg>
-							</button>
-						</td>
-					</tr>
-				</table>
-			</div>
+				<fieldset name="savingThrows">
+					<label for="fortitude">FORT</label>
+					<input type="number" name="fortitude" id="fortitude" value="15" min="-10" max="50">
+					<select id="fortScaling" name="fortScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="reflex">REF</label>
+					<input type="number" name="reflex" id="reflex" value="15" min="-10" max="50">
+					<select id="refScaling" name="refScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+					<label for="will">WILL</label>
+					<input type="number" name="will" id="will" value="2" min="-10" max="50">
+					<select id="willScaling" name="willScaling">
+						<option selected>No Scaling</option>
+						<option>Low</option>
+						<option>Moderate</option>
+						<option>High</option>
+						<option>Extreme</option>
+					</select>
+				</fieldset>
 		</main>
+
+		<fieldset name="negations">
+			<div id="weaknesses" class="appending_weaknesses">
+				<label for="weaknesses">Weaknesses</label>
+				<span>
+					<input type="text" name="weakness[]" placeholder="new weakness">
+				</span>
+				<!-- Can add and remove weaknesss onClick of plus or minus sign -->
+				<span id="weaknessAdd" class="fa fa-plus add"></span>
+				<span id="weaknessMinus" class="fa fa-minus minus"></span>
+			</div>
+			<div id="immunities" class="appending_immunities">
+				<label for="immunities">Immunities</label>
+				<span>
+					<input type="text" name="immunity[]" placeholder="new immunity">
+				</span>
+				<!-- Can add and remove immunities onClick of plus or minus sign -->
+				<span id="immunityAdd" class="fa fa-plus add"></span>
+				<span id="immunityMinus" class="fa fa-minus minus"></span>
+			</div>
+			<div id="resistances" class="appending_resistances">
+				<label for="resistances">Resistances</label>
+				<span>
+					<input type="text" name="resistances[]" placeholder="new resistance">
+				</span>
+				<!-- Can add and remove resistances onClick of plus or minus sign -->
+				<span id="resistanceAdd" class="fa fa-plus add"></span>
+				<span id="resistanceMinus" class="fa fa-minus minus"></span>
+			</div>
+		</fieldset>
+
+		<fieldset name="skills">
+			<div id="skills" class="appending_skills">
+				<label for="skills">Skills</label>
+				<span>
+					<input type="text" name="skill[]" placeholder="new skill">
+				</span>
+				<!-- Can add and remove skills onClick of plus or minus sign -->
+				<span id="skillAdd" class="fa fa-plus add"></span>
+				<span id="skillMinus" class="fa fa-minus minus"></span>
+			</div>
+		</fieldset>
+
+		<fieldset name="actions">
+			<div id="actions" class="appending_actions">
+				<label for="actions">Actions</label>
+				<span>
+					<input type="text" name="action[]" placeholder="new action">
+				</span>
+				<!-- Can add and remove actions onClick of plus or minus sign -->
+				<span id="actionAdd" class="fa fa-plus add"></span>
+				<span id="actionMinus" class="fa fa-minus minus"></span>
+			</div>
+		</fieldset>
+
+		<fieldset name="inventorySection">
+			<label for="inventory">Inventory</label>
+			<textarea id="inventory" name="inventory"></textarea>
+		</fieldset>
+
+		<fieldset name="notesSection">
+			<label for="notes">Notes</label>
+			<textarea id="notes" name="notes"></textarea>
+		</fieldset>
 
 		<footer>
 			<hr />
