@@ -29,7 +29,7 @@
 		</header>
 
 		<main>
-			<form action="user_database.html" method="get">
+			<form action="user_database.html">
 				<!-- If the user selects Weak or Elite adjustments, it will change statistics onClick -->
 				<fieldset name="creatureAdjust">
 					<label for="weakAdjust">Weak</label>
@@ -40,8 +40,10 @@
 					<input type="radio" id="eliteAdjust" name="creatureAdjust" value="eliteAdjustment" />
 				</fieldset>
 
-				<button type="submit" name="save" class="fa fa-save"></button><span><button type="button" name="random"
-						class="fa fa-dice"></button></span>
+				<span>
+					<button type="button" name="save" class="fa fa-save"></button>
+					<button type="button" name="random" class="fa fa-dice"></button>
+				</span>
 
 				<fieldset name="creatureBar">
 					<input type="text" id="creatureName" name="creatureName" placeholder="Creature Name" required />
