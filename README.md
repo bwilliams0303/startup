@@ -50,19 +50,21 @@ Structure of the application.
 * Database - A table to structure the user's preexisting created creatures. Button to save a creature to the database. Button to edit prexisting creature. Button to upload creature to forum. Button to delete creature from the database
 * WebSocket - A forum of other user's uploaded creatures. A popup structure to notify other users when someone uploads a new creature.
 
-View raw to see future deliverables
 
-<!-- ## CSS Deliverable
+## CSS Deliverable
 
 Application appearance.
 
 * Header, footer, and main content body.
 * Menu Bar elements.
-* Window resizing for all devices and screen sizes.
+* Window resizing for all devices and screen sizes. (Navbar resizing works but doesn't look very pretty, will be updating this.)
 * Effective contrast and white spacing techniques for all parts of the app.
 * Consistent use fonts and colors.
+* Added test buttons for expiramental popups for Websocket to work with when developed.
 
-## JavaScript Deliverable
+View raw to see future deliverables
+
+<!-- ## JavaScript Deliverable
 
 App functionality.
 
