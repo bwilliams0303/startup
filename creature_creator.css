@@ -11,6 +11,10 @@ html {
 
 	header {
 		margin: 0%;
+
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
 	}
 
 	main {
@@ -83,6 +87,7 @@ html {
 
 	  #abilityScores {
 		  column-gap: 4vh;
+		  flex-wrap: wrap;
 	  }
 
 	  #STR, #DEX, #CON, #INT, #WIS, #CHA {
@@ -103,3 +108,12 @@ html {
 		border-bottom-width: 2px;
 	}
 
+@media (max-width: 600px) {
+	#creatureBar {
+		column-gap: 8vh;
+	}
+
+	#nameBar, #levelSelecter {
+		min-width: 20vh;
+	}
+}
