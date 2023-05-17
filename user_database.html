@@ -13,6 +13,7 @@
 			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<title>My Creatures</title>
 		<link rel="icon" href="icon.ico" />
+		<link href="user_database.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -49,20 +50,24 @@
 		</header>
 
 		<main>
-			<table>
-				<caption>My Creatures</caption>
+
+			<div id="tableTitle">
+				<p>My Creatures</p>
+			</div>
+
+			<table class="table table-hover">
 				<thead>
-					<tr>
-						<th>Creture Name</th>
-						<th>Level</th>
-						<th>Date</th>
-						<th>Actions</th>
+					<tr class="table-dark">
+						<th scope="col">Level</th>
+						<th scope="col">Creture Name</th>
+						<th scope="col">Created Date</th>
+						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
+					<tr class="table-light">
+						<th scope="row">8</th>
 						<td>Goblin</td>
-						<td>8</td>
 						<td>May 20, 2021</td>
 						<td>
 							<button type="button" name="edit[]" class="fa fa-edit"></button>
@@ -70,9 +75,9 @@
 							<button type="button" name="delete[]" class="fa fa-trash"></button>
 						</td>
 					</tr>
-					<tr>
+					<tr class="table-light">
+						<th scope="row">13</th>
 						<td>Air Elemental</td>
-						<td>13</td>
 						<td>June 2, 2021</td>
 						<td>
 							<button type="button" name="edit[]" class="fa fa-edit"></button>
@@ -80,9 +85,9 @@
 							<button type="button" name="delete[]" class="fa fa-trash"></button>
 						</td>
 					</tr>
-					<tr>
+					<tr class="table-light">
+						<th scope="row">2</th>
 						<td>Large Rat</td>
-						<td>2</td>
 						<td>June 2, 2021</td>
 						<td>
 							<button type="button" name="edit[]" class="fa fa-edit"></button>
@@ -93,6 +98,13 @@
 				</tbody>
 			</table>
 		</main>
+		<footer class="footer mt-auto py-3">
+			<div class="container">
+				<span>Bryson Williams</span>
+				<br />
+				<a href="https://github.com/bwilliams0303/startup">GitHub</a>
+			</div>
+		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 			crossorigin="anonymous"></script>

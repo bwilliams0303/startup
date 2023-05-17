@@ -1,0 +1,39 @@
+html {
+	height: 100%;
+  }
+	
+	body {
+	  display: flex;
+	  flex-direction: column;
+	  height: 100%;
+	  background-color: #f5e5bf;
+	}
+
+	header {
+		margin: 0%;
+	}
+
+	main {
+		margin: 3em;
+		row-gap: 0.7em;
+	}
+
+	#tableTitle {
+		font-size: large;
+		font-weight: bold;
+	}
+
+	td {
+		background-color: #EBB97D;
+	}
+
+	footer {
+		background: #707070;
+		color: white;
+  	}
+
+  .container {
+	  width: auto;
+	  max-width: 680px;
+	  padding: 0 15px;
+	}
