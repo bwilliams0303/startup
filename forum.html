@@ -13,6 +13,7 @@
 			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<title>Creature Forum</title>
 		<link rel="icon" href="icon.ico" />
+		<link href="forum.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -48,7 +49,41 @@
 		</header>
 
 		<main>
-			<header id="forumHeader">
+
+			<div id="tableTitle">
+				<p>Community Creations</p>
+			</div>
+
+			<table class="table table-hover">
+				<thead>
+					<tr class="table-dark">
+						<th scope="col">Level</th>
+						<th scope="col">Creture Name</th>
+						<th scope="col">Author</th>
+						<th scope="col">View</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table-light">
+						<th scope="row">15</th>
+						<td>Half-Goblin</td>
+						<td>bwilliams0303</td>
+						<td>
+							<button type="button" name="post[1]" class="fa fa-eye"></button>
+						</td>
+					</tr>
+					<tr class="table-light">
+						<th scope="row">8</th>
+						<td>Werewolf</td>
+						<td>kkuang0819</td>
+						<td>
+							<button type="button" name="post[2]" class="fa fa-eye"></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!-- <header id="forumHeader">
 				<span id="nameHeader"><b>Creature Name</b></span>
 				<span id="levelHeader"><b>Level</b></span>
 				<span id="authorHeader"><b>Author</b></span>
@@ -65,15 +100,68 @@
 				<span id="forumCreature2Level">8</span>
 				<span id="forumCreature2Author">kkuang0819</span>
 				<button type="button" name="post[2]" class="fa fa-eye"></button>
+			</div> -->
+			<br>
+			<br>
+
+			<p>Still Deciding which type of popup I want to use. I'm putting both here for testing purposes</p>
+
+			<!-- Button to trigger popup for testing purposes -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				Test Modal Popup
+			</button>
+
+			<!-- Popup that will be linked to the Websocket -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">Forum Update</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<p><span id="popupUser">[Username]</span> just created a level <span
+									id="popupLevel">[_]</span> <span id="popupName">[creature name]</span>!</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
 			</div>
+
+			<!-- Popup that will be linked to the Websocket -->
+			<button type="button" class="btn btn-primary" id="liveToastBtn">Test Toast Popup</button>
+
+			<div class="toast-container position-fixed top-0 end-0 p-3">
+				<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-header">
+						<!-- <img src="..." class="rounded me-2" alt="..."> -->
+						<strong class="me-auto">Forum Update</strong>
+						<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
+					<div class="toast-body">
+						<p><span id="popupUser">[Username]</span> just created a level <span id="popupLevel">[_]</span>
+							<span id="popupName">[creature name]</span>!
+						</p>
+					</div>
+				</div>
+			</div>
+
 		</main>
+		<footer class="footer mt-auto py-3">
+			<div class="container">
+				<span>Bryson Williams</span>
+				<br />
+				<a href="https://github.com/bwilliams0303/startup">GitHub</a>
+			</div>
+		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 			crossorigin="anonymous"></script>
+		<script src="forum.js"></script>
 	</body>
-	<!-- WebSocket Popup -->
-	<div id="popup">
-		<div id="popupMessage"><span id="popupUser">[Username]</span> just created a level <span
-				id="popupLevel">[_]</span> <span id="popupName">[creature name]</span>!</div>
+
 
 </html>
