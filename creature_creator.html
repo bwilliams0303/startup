@@ -11,6 +11,7 @@
 			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<title>Creature Creator</title>
 		<link rel="icon" href="icon.ico" />
+		<link href="creature_creator.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -28,10 +29,11 @@
 					<div class="collapse navbar-collapse" id="navbarsExample02">
 						<ul class="navbar-nav me-auto">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="index.html">Home</a>
+								<a class="nav-link" href="index.html">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="creature_creator.html">Creature Creator</a>
+								<a class="nav-link active" aria-current="page" href="creature_creator.html">Creature
+									Creator</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="user_database.html">My Creatures</a>
@@ -46,29 +48,38 @@
 		</header>
 
 		<main>
-			<form>
+			<form id="creature_sheet">
+
+				<div id="buttons" name="buttons">
+					<button type="button" class="btn btn-light">
+						<div class="fa fa-save"></div>
+					</button>
+					<button type="button" class="btn btn-light">
+						<div class="fa fa-dice"></div>
+					</button>
+
+				</div>
+
 				<!-- If the user selects Weak or Elite adjustments, it will change statistics onClick -->
-				<fieldset name="creatureAdjust">
-					<label for="weakAdjust">Weak</label>
-					<input type="radio" id="weakAdjust" name="creatureAdjust" value="weakAdjustment" />
-					<label for="normalAdjust">Normal</label>
-					<input type="radio" id="normalAdjust" name="creatureAdjust" value="normalAdjustment" checked />
-					<label for="eliteAdjust">Elite</label>
-					<input type="radio" id="eliteAdjust" name="creatureAdjust" value="eliteAdjustment" />
+				<fieldset id="adjustmentButtons" name="creatureAdjust">
+					<input type="radio" class="btn-check" name="creatureAdjust" id="option1" autocomplete="off">
+					<label class="btn btn-secondary" for="option1">Weak</label>
+
+					<input type="radio" class="btn-check" name="creatureAdjust" id="option2" autocomplete="off" checked>
+					<label class="btn btn-secondary" for="option2">Normal</label>
+
+					<input type="radio" class="btn-check" name="creatureAdjust" id="option3" autocomplete="off">
+					<label class="btn btn-secondary" for="option3">Elite</label>
 				</fieldset>
 
-				<span>
-					<button type="button" name="save" class="fa fa-save"></button>
-					<button type="button" name="random" class="fa fa-dice"></button>
-				</span>
-
-				<fieldset name="creatureBar">
-					<input type="text" id="creatureName" name="creatureName" placeholder="Creature Name" required />
-					<span>
-						<label for="creatureLevel">Level: </label>
-						<input type="number" id="creatureLevel" name="creatureLevel" placeholder="level" min="-2"
-							max="30" vaule="0" required />
-					</span>
+				<fieldset id="creatureBar" name="creatureBar">
+					<div id="nameBar" class="input-group mb-3">
+						<input type="text" class="form-control" placeholder="Creature Name">
+					</div>
+					<div id="levelSelecter" class="form-outline">
+						<input type="number" id="typeNumber" class="form-control" placeholder="Level" min="-2" max="30"
+							vaule="0" required />
+					</div>
 				</fieldset>
 
 				<fieldset name="appearance">
@@ -76,37 +87,42 @@
 					<input type="file" id="chooseFile" name="uploadedPicture" accept="image/*">
 				</fieldset>
 
-				<fieldset name="traits">
-					<select id="alignment" name="alignment">
-						<option>Lawful Good</option>
-						<option>Neutral Good</option>
-						<option>Chaotic Good</option>
-						<option>Lawful Neutral</option>
-						<option selected>True Neutral</option>
-						<option>Chaotic Neutral</option>
-						<option>Lawful Evil</option>
-						<option>True Evil</option>
-						<option>Chaotic Evil</option>
-					</select>
-					<select id="size" name="size">
-						<option>Tiny</option>
-						<option>Small</option>
-						<option selected>Medium</option>
-						<option>Large</option>
-						<option>Huge</option>
-					</select>
-					<span name="newTraits" id="newTraits" class="appending_traits">
-						<span>
-							<input type="text" name="trait[]" placeholder="new trait">
+				<fieldset id="traits" name="traits">
+
+					<div id="traitsFirst">
+						<select id="alignment" name="alignment">
+							<option>Lawful Good</option>
+							<option>Neutral Good</option>
+							<option>Chaotic Good</option>
+							<option>Lawful Neutral</option>
+							<option selected>True Neutral</option>
+							<option>Chaotic Neutral</option>
+							<option>Lawful Evil</option>
+							<option>True Evil</option>
+							<option>Chaotic Evil</option>
+						</select>
+						<select id="size" name="size">
+							<option>Tiny</option>
+							<option>Small</option>
+							<option selected>Medium</option>
+							<option>Large</option>
+							<option>Huge</option>
+						</select>
+						<span name="newTraits" id="newTraits" class="appending_traits">
+							<span>
+								<input type="text" name="trait[]" placeholder="New Trait">
+							</span>
+							<!-- Can add and remove traits onClick of plus or minus sign -->
+							<span id="traitsAdd" class="fa fa-plus add"></span>
+							<span id="traitsMinus" class="fa fa-minus minus"></span>
 						</span>
-						<!-- Can add and remove traits onClick of plus or minus sign -->
-						<span id="traitsAdd" class="fa fa-plus add"></span>
-						<span id="traitsMinus" class="fa fa-minus minus"></span>
-					</span>
+					</div>
+
+
 					<div id="languages" class="appending_languages">
 						<label for="languages">Languages</label>
 						<span>
-							<input type="text" name="language[]" placeholder="new language">
+							<input type="text" name="language[]" placeholder="New Language">
 						</span>
 						<!-- Can add and remove languages onClick of plus or minus sign -->
 						<span id="languagesAdd" class="fa fa-plus add"></span>
@@ -118,195 +134,235 @@
 					</div>
 				</fieldset>
 
-				<fieldset name="abilityScores">
-					<label for="abilityStr">STR</label>
-					<input type="number" name="abilityStr" id="abilityStr" value="0" min="-10" max="20">
-					<select id="strScaling" name="strScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="abilityDex">DEX</label>
-					<input type="number" name="abilityDex" id="abilityDex" value="0" min="-10" max="20">
-					<select id="dexScaling" name="dexScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="abilityCon">CON</label>
-					<input type="number" name="abilityCon" id="abilityCon" value="0" min="-10" max="20">
-					<select id="conScaling" name="conScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="abilityInt">INT</label>
-					<input type="number" name="abilityInt" id="abilityInt" value="0" min="-10" max="20">
-					<select id="intScaling" name="intScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="abilityWis">WIS</label>
-					<input type="number" name="abilityWis" id="abilityWis" value="0" min="-10" max="20">
-					<select id="intScaling" name="intScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="abilityCha">CHA</label>
-					<input type="number" name="abilityCha" id="abilityCha" value="0" min="-10" max="20">
-					<select id="chaScaling" name="chaScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
+				<fieldset id="abilityScores" name="abilityScores">
+					<div id="STR">
+						<div>
+							<label for="abilityStr">STR</label>
+							<input type="number" name="abilityStr" id="abilityStr" value="0" min="-10" max="20">
+						</div>
+						<select id="strScaling" name="strScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div id="DEX">
+						<div>
+							<label for="abilityDex">DEX</label>
+							<input type="number" name="abilityDex" id="abilityDex" value="0" min="-10" max="20">
+						</div>
+						<select id="dexScaling" name="dexScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div id="CON">
+						<div>
+							<label for="abilityCon">CON</label>
+							<input type="number" name="abilityCon" id="abilityCon" value="0" min="-10" max="20">
+						</div>
+						<select id="conScaling" name="conScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div id="INT">
+						<div>
+							<label for="abilityInt">INT</label>
+							<input type="number" name="abilityInt" id="abilityInt" value="0" min="-10" max="20">
+						</div>
+						<select id="intScaling" name="intScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div id="WIS">
+						<div>
+							<label for="abilityWis">WIS</label>
+							<input type="number" name="abilityWis" id="abilityWis" value="0" min="-10" max="20">
+						</div>
+						<select id="intScaling" name="intScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div id="CHA">
+						<div>
+							<label for="abilityCha">CHA</label>
+							<input type="number" name="abilityCha" id="abilityCha" value="0" min="-10" max="20">
+						</div>
+						<select id="chaScaling" name="chaScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
 				</fieldset>
 
-				<fieldset name="statistics">
-					<label for="health">Health</label>
-					<input type="number" name="health" id="health" value="15" min="-50" max="100">
-					<select id="healthScaling" name="healthScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<br>
-					<label for="armorClass">AC</label>
-					<input type="number" name="armorClass" id="armorClass" value="15" min="-50" max="100">
-					<select id="acScaling" name="acScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<br>
-					<label for="perception">Perception</label>
-					<input type="number" name="perception" id="perception" value="2" min="-50" max="100">
-					<select id="conScaling" name="conScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
+				<fieldset id="statistics" name="statistics">
+					<div>
+						<label for="health">Health</label>
+						<input type="number" name="health" id="health" value="15" min="-50" max="100">
+						<select id="healthScaling" name="healthScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div>
+						<label for="armorClass">AC</label>
+						<input type="number" name="armorClass" id="armorClass" value="15" min="-50" max="100">
+						<select id="acScaling" name="acScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div>
+						<label for="perception">Perception</label>
+						<input type="number" name="perception" id="perception" value="2" min="-50" max="100">
+						<select id="conScaling" name="conScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
 				</fieldset>
 
-				<fieldset name="savingThrows">
-					<label for="fortitude">FORT</label>
-					<input type="number" name="fortitude" id="fortitude" value="15" min="-10" max="50">
-					<select id="fortScaling" name="fortScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="reflex">REF</label>
-					<input type="number" name="reflex" id="reflex" value="15" min="-10" max="50">
-					<select id="refScaling" name="refScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
-					<label for="will">WILL</label>
-					<input type="number" name="will" id="will" value="2" min="-10" max="50">
-					<select id="willScaling" name="willScaling">
-						<option selected>No Scaling</option>
-						<option>Low</option>
-						<option>Moderate</option>
-						<option>High</option>
-						<option>Extreme</option>
-					</select>
+				<fieldset id="savingThrows" name="savingThrows">
+					<div>
+						<label for="fortitude">FORT</label>
+						<input type="number" name="fortitude" id="fortitude" value="15" min="-10" max="50">
+						<select id="fortScaling" name="fortScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div>
+						<label for="reflex">REF</label>
+						<input type="number" name="reflex" id="reflex" value="15" min="-10" max="50">
+						<select id="refScaling" name="refScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
+					<div>
+						<label for="will">WILL</label>
+						<input type="number" name="will" id="will" value="2" min="-10" max="50">
+						<select id="willScaling" name="willScaling">
+							<option selected>No Scaling</option>
+							<option>Low</option>
+							<option>Moderate</option>
+							<option>High</option>
+							<option>Extreme</option>
+						</select>
+					</div>
 				</fieldset>
+
+				<fieldset id="negations" name="negations">
+					<div id="weaknesses" class="appending_weaknesses">
+						<label for="weaknesses">Weaknesses</label>
+						<span>
+							<input type="text" name="weakness[]" placeholder="New Weakness">
+						</span>
+						<!-- Can add and remove weaknesss onClick of plus or minus sign -->
+						<span id="weaknessAdd" class="fa fa-plus add"></span>
+						<span id="weaknessMinus" class="fa fa-minus minus"></span>
+					</div>
+					<div id="immunities" class="appending_immunities">
+						<label for="immunities">Immunities</label>
+						<span>
+							<input type="text" name="immunity[]" placeholder="New Immunity">
+						</span>
+						<!-- Can add and remove immunities onClick of plus or minus sign -->
+						<span id="immunityAdd" class="fa fa-plus add"></span>
+						<span id="immunityMinus" class="fa fa-minus minus"></span>
+					</div>
+					<div id="resistances" class="appending_resistances">
+						<label for="resistances">Resistances</label>
+						<span>
+							<input type="text" name="resistances[]" placeholder="New Resistance">
+						</span>
+						<!-- Can add and remove resistances onClick of plus or minus sign -->
+						<span id="resistanceAdd" class="fa fa-plus add"></span>
+						<span id="resistanceMinus" class="fa fa-minus minus"></span>
+					</div>
+				</fieldset>
+
+				<fieldset name="skills">
+					<div id="skills" class="appending_skills">
+						<label for="skills">Skills</label>
+						<span>
+							<input type="text" name="skill[]" placeholder="New Skill">
+						</span>
+						<!-- Can add and remove skills onClick of plus or minus sign -->
+						<span id="skillAdd" class="fa fa-plus add"></span>
+						<span id="skillMinus" class="fa fa-minus minus"></span>
+					</div>
+				</fieldset>
+
+				<fieldset name="actions">
+					<div id="actions" class="appending_actions">
+						<label for="actions">Actions</label>
+						<span>
+							<input type="text" name="action[]" placeholder="New Action">
+						</span>
+						<!-- Can add and remove actions onClick of plus or minus sign -->
+						<span id="actionAdd" class="fa fa-plus add"></span>
+						<span id="actionMinus" class="fa fa-minus minus"></span>
+					</div>
+				</fieldset>
+
+				<fieldset name="inventorySection">
+					<div id="inventory" class="form-group">
+						<label for="exampleFormControlTextarea1">Inventory</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
+				</fieldset>
+
+				<fieldset id="notesSection" name="notesSection">
+					<div id="notes" class="form-group">
+						<label for="exampleFormControlTextarea1">Notes</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
+				</fieldset>
+			</form>
 		</main>
 
-		<fieldset name="negations">
-			<div id="weaknesses" class="appending_weaknesses">
-				<label for="weaknesses">Weaknesses</label>
-				<span>
-					<input type="text" name="weakness[]" placeholder="new weakness">
-				</span>
-				<!-- Can add and remove weaknesss onClick of plus or minus sign -->
-				<span id="weaknessAdd" class="fa fa-plus add"></span>
-				<span id="weaknessMinus" class="fa fa-minus minus"></span>
+		<footer class="footer mt-auto py-3">
+			<div class="container">
+				<span>Bryson Williams</span>
+				<br />
+				<a href="https://github.com/bwilliams0303/startup">GitHub</a>
 			</div>
-			<div id="immunities" class="appending_immunities">
-				<label for="immunities">Immunities</label>
-				<span>
-					<input type="text" name="immunity[]" placeholder="new immunity">
-				</span>
-				<!-- Can add and remove immunities onClick of plus or minus sign -->
-				<span id="immunityAdd" class="fa fa-plus add"></span>
-				<span id="immunityMinus" class="fa fa-minus minus"></span>
-			</div>
-			<div id="resistances" class="appending_resistances">
-				<label for="resistances">Resistances</label>
-				<span>
-					<input type="text" name="resistances[]" placeholder="new resistance">
-				</span>
-				<!-- Can add and remove resistances onClick of plus or minus sign -->
-				<span id="resistanceAdd" class="fa fa-plus add"></span>
-				<span id="resistanceMinus" class="fa fa-minus minus"></span>
-			</div>
-		</fieldset>
-
-		<fieldset name="skills">
-			<div id="skills" class="appending_skills">
-				<label for="skills">Skills</label>
-				<span>
-					<input type="text" name="skill[]" placeholder="new skill">
-				</span>
-				<!-- Can add and remove skills onClick of plus or minus sign -->
-				<span id="skillAdd" class="fa fa-plus add"></span>
-				<span id="skillMinus" class="fa fa-minus minus"></span>
-			</div>
-		</fieldset>
-
-		<fieldset name="actions">
-			<div id="actions" class="appending_actions">
-				<label for="actions">Actions</label>
-				<span>
-					<input type="text" name="action[]" placeholder="new action">
-				</span>
-				<!-- Can add and remove actions onClick of plus or minus sign -->
-				<span id="actionAdd" class="fa fa-plus add"></span>
-				<span id="actionMinus" class="fa fa-minus minus"></span>
-			</div>
-		</fieldset>
-
-		<fieldset name="inventorySection">
-			<label for="inventory">Inventory</label>
-			<textarea id="inventory" name="inventory"></textarea>
-		</fieldset>
-
-		<fieldset name="notesSection">
-			<label for="notes">Notes</label>
-			<textarea id="notes" name="notes"></textarea>
-		</fieldset>
-
-		<footer>
-			<hr />
-			<span class="text-reset">Author Name(s)</span>
-			<br />
-			<a href="https://github.com/webprogramming260/simon-html">GitHub</a>
 		</footer>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

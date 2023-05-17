@@ -1,0 +1,105 @@
+html {
+	height: 100%;
+  }
+	
+	body {
+	  display: flex;
+	  flex-direction: column;
+	  height: 100%;
+	  background-color: #f5e5bf;
+	}
+
+	header {
+		margin: 0;
+	}
+
+	main {
+		margin: 1em;
+	}
+
+	fieldset {
+		background-color: #EBB97D;
+		font-weight: bold;
+
+		padding-top: 1em;
+		padding-left: 1em;
+		padding-bottom: 1em;
+		border: 2px;
+		border-color: black;
+		border-style: solid;
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+		
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		row-gap: 10px;
+  		column-gap: 5px;
+	}
+  
+	footer {
+	  background: #707070;
+	  color: white;
+	}
+
+	.container {
+		width: auto;
+		max-width: 680px;
+		padding: 0 15px;
+	  }
+
+	  #buttons {
+		  padding-left: 1em;
+		  column-gap: 0.5vh;
+	  }
+
+	  #adjustmentButtons {
+		border-width: 0px;
+		background-color: #f5e5bf;
+	  }
+
+	  #creatureBar {
+		  background: #985025;
+		  column-gap: 30vh;
+		  border-top-width: 2px;
+	  }
+
+	  #nameBar {
+		  width: 50vh;
+	  }
+
+	  #levelSelecter {
+		  width: 10vh;
+	  }
+
+	  #traits {
+		flex-direction: column;
+		column-gap: 1em;
+	  }
+
+	  #traitsFirst {
+		  column-gap: 1em;
+	  }
+
+	  #abilityScores {
+		  column-gap: 4vh;
+	  }
+
+	  #STR, #DEX, #CON, #INT, #WIS, #CHA {
+		  flex-direction: column;
+		  row-gap: 0.7vh;
+	  }
+
+	  #statistics, #savingThrows, #negations {
+		  flex-direction: column;
+		  row-gap: 1vh;
+	  }
+
+	  #inventory, #notes {
+		  width: 60vh;
+	  }
+
+	  #notesSection {
+		border-bottom-width: 2px;
+	}
+
