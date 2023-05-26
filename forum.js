@@ -7,3 +7,7 @@ if (toastTrigger) {
 		toast.show()
 	})
 }
+
+function newMonster() {
+	localStorage.setItem("loadCreature", "new");
+}
