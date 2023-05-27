@@ -1,119 +1,153 @@
 html {
 	height: 100%;
-  }
-	
-	body {
-	  display: flex;
-	  flex-direction: column;
-	  height: 100%;
-	  background-color: #f5e5bf;
-	}
+}
 
-	header {
-		margin: 0%;
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #f5e5bf;
+}
 
-		flex-direction: row;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-	}
+header {
+	margin: 0%;
 
-	main {
-		margin: 1em;
-	}
+	flex-direction: row;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
 
-	fieldset {
-		background-color: #EBB97D;
-		font-weight: bold;
+main {
+	margin: 1em;
+}
 
-		padding-top: 1em;
-		padding-left: 1em;
-		padding-bottom: 1em;
-		border: 2px;
-		border-color: black;
-		border-style: solid;
-		border-top-width: 1px;
-		border-bottom-width: 1px;
-		
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		row-gap: 10px;
-  		column-gap: 5px;
-	}
-  
-	footer {
-	  background: #707070;
-	  color: white;
-	}
+fieldset {
+	background-color: #EBB97D;
+	font-weight: bold;
 
-	.container {
-		width: auto;
-		max-width: 680px;
-		padding: 0 15px;
-	  }
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	border: 2px;
+	border-color: black;
+	border-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
 
-	  #buttons {
-		  padding-left: 1em;
-		  column-gap: 0.5vh;
-	  }
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	row-gap: 10px;
+	column-gap: 5px;
+}
 
-	  #adjustmentButtons {
-		border-width: 0px;
-		background-color: #f5e5bf;
-	  }
+footer {
+	background: #707070;
+	color: white;
+}
 
-	  #creatureBar {
-		  background: #985025;
-		  column-gap: 30vh;
-		  border-top-width: 2px;
-	  }
+.container {
+	width: auto;
+	max-width: 680px;
+	padding: 0 15px;
+}
 
-	  #nameBar {
-		  width: 50vh;
-	  }
+#buttons {
+	padding-left: 1em;
+	column-gap: 0.5vh;
+}
 
-	  #levelSelecter {
-		  width: 10vh;
-	  }
+#adjustmentButtons {
+	border-width: 0px;
+	background-color: #f5e5bf;
+}
 
-	  #traits {
-		flex-direction: column;
-		column-gap: 1em;
-	  }
+#creatureBar {
+	background: #985025;
+	column-gap: 30vh;
+	border-top-width: 2px;
+}
 
-	  #traitsFirst {
-		  column-gap: 1em;
-	  }
+#nameBar {
+	width: 50vh;
+}
 
-	  #abilityScores {
-		  column-gap: 4vh;
-		  flex-wrap: wrap;
-	  }
+#levelSelecter {
+	width: 10vh;
+}
 
-	  #STR, #DEX, #CON, #INT, #WIS, #CHA {
-		  flex-direction: column;
-		  row-gap: 0.7vh;
-	  }
+#traits {
+	flex-direction: column;
+	column-gap: 1em;
+}
 
-	  #statistics, #savingThrows, #negations {
-		  flex-direction: column;
-		  row-gap: 1vh;
-	  }
+.appended-items-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
 
-	  #inventory, #notes {
-		  width: 60vh;
-	  }
+.appended-items {
+	list-style-type: none;
+	padding: 0;
+	margin-right: 5px;
+	display: flex;
+	flex-wrap: wrap;
+}
 
-	  #notesSection {
-		border-bottom-width: 2px;
-	}
+.appended-items li {
+	display: flex;
+	align-items: center;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.appended-items li input[type="text"] {
+	margin-right: 5px;
+}
+
+#traitsFirst {
+	column-gap: 1em;
+}
+
+#abilityScores {
+	column-gap: 4vh;
+	flex-wrap: wrap;
+}
+
+#STR,
+#DEX,
+#CON,
+#INT,
+#WIS,
+#CHA {
+	flex-direction: column;
+	row-gap: 0.7vh;
+}
+
+#statistics,
+#savingThrows,
+#negations {
+	flex-direction: column;
+	row-gap: 1vh;
+}
+
+#inventory,
+#notes {
+	width: 60vh;
+}
+
+#notesSection {
+	border-bottom-width: 2px;
+}
 
 @media (max-width: 600px) {
 	#creatureBar {
 		column-gap: 8vh;
 	}
 
-	#nameBar, #levelSelecter {
+	#nameBar,
+	#levelSelecter {
 		min-width: 20vh;
 	}
 }

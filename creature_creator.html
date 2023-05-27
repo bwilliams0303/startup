@@ -51,7 +51,7 @@
 			<form id="creatureSheet" name="creatureSheet">
 
 				<div id="buttons" name="buttons">
-					<button type="button" class="btn btn-light" onclick="creature.saveCreature()">
+					<button type="button" id="saveButon" class="btn btn-light" onclick="creature.saveCreature()">
 						<div class="fa fa-save"></div>
 					</button>
 					<button type="button" class="btn btn-light">
@@ -60,7 +60,6 @@
 
 				</div>
 
-				<!-- If the user selects Weak or Elite adjustments, it will change statistics onClick -->
 				<fieldset id="adjustmentButtons">
 					<input type="radio" class="btn-check" name="creatureAdjust" id="option1" value="weak"
 						autocomplete="off">
@@ -111,25 +110,26 @@
 							<option value="large">Large</option>
 							<option value="huge">Huge</option>
 						</select>
-						<span name="newTraits" id="newTraits" class="appending_traits">
-							<span>
-								<input type="text" name="trait[]" placeholder="New Trait">
-							</span>
-							<!-- Can add and remove traits onClick of plus or minus sign -->
-							<span id="traitsAdd" class="fa fa-plus add"></span>
-							<span id="traitsMinus" class="fa fa-minus minus"></span>
+						<span name="newTraits" id="newTraits" class="appended-items-container">
+							<ul id="traits-list" class="appended-items">
+								<li><input type="text" name="trait[]" placeholder="New Trait"></li>
+							</ul>
+							<button id="traitsMinus" class="fa fa-minus minus"></button>
+							<button id="traitsAdd" class="fa fa-plus add"></button>
 						</span>
 					</div>
 
 
 					<div id="languages" class="appending_languages">
 						<label for="languages">Languages</label>
-						<span>
-							<input type="text" name="language[]" placeholder="New Language">
+						<span name="newLanguages" id="newLanguages" class="appended-items-container">
+							<ul id="languages-list" class="appended-items">
+								<li><input type="text" name="language[]" placeholder="New Language"></li>
+							</ul>
+							<button id="languagesMinus" class="fa fa-minus minus"></button>
+							<button id="languagesAdd" class="fa fa-plus add"></button>
 						</span>
 						<!-- Can add and remove languages onClick of plus or minus sign -->
-						<span id="languagesAdd" class="fa fa-plus add"></span>
-						<span id="languagesMinus" class="fa fa-minus minus"></span>
 					</div>
 					<div id="speed">
 						<label for="speed">Speed</label>
@@ -195,7 +195,7 @@
 							<label for="abilityWis">WIS</label>
 							<input type="number" name="abilityWis" id="abilityWis" value="0" min="-10" max="20">
 						</div>
-						<select id="intScaling" name="intScaling">
+						<select id="wisScaling" name="wisScaling">
 							<option value="none" selected>No Scaling</option>
 							<option value="low">Low</option>
 							<option value="moderate">Moderate</option>
@@ -293,56 +293,61 @@
 				<fieldset id="negations" name="negations">
 					<div id="weaknesses" class="appending_weaknesses">
 						<label for="weaknesses">Weaknesses</label>
-						<span>
-							<input type="text" name="weakness[]" placeholder="New Weakness">
+						<span name="newWeaknesses" id="newWeaknesses" class="appended-items-container">
+							<ul id="weaknesses-list" class="appended-items">
+								<li><input type="text" name="weakness[]" placeholder="New Weakness"></li>
+							</ul>
+							<button id="weaknessMinus" class="fa fa-minus minus"></button>
+							<button id="weaknessAdd" class="fa fa-plus add"></button>
 						</span>
-						<!-- Can add and remove weaknesss onClick of plus or minus sign -->
-						<span id="weaknessAdd" class="fa fa-plus add"></span>
-						<span id="weaknessMinus" class="fa fa-minus minus"></span>
 					</div>
 					<div id="immunities" class="appending_immunities">
 						<label for="immunities">Immunities</label>
-						<span>
-							<input type="text" name="immunity[]" placeholder="New Immunity">
+						<span name="newImmunities" id="newImmunities" class="appended-items-container">
+							<ul id="immunities-list" class="appended-items">
+								<li><input type="text" name="immunities[]" placeholder="New Immunity"></li>
+							</ul>
+							<button id="immunityMinus" class="fa fa-minus minus"></button>
+							<button id="immunityAdd" class="fa fa-plus add"></button>
 						</span>
-						<!-- Can add and remove immunities onClick of plus or minus sign -->
-						<span id="immunityAdd" class="fa fa-plus add"></span>
-						<span id="immunityMinus" class="fa fa-minus minus"></span>
 					</div>
 					<div id="resistances" class="appending_resistances">
 						<label for="resistances">Resistances</label>
-						<span>
-							<input type="text" name="resistances[]" placeholder="New Resistance">
+						<span name="newResistances" id="newResistances" class="appended-items-container">
+							<ul id="resistances-list" class="appended-items">
+								<li><input type="text" name="resistances[]" placeholder="New Resistance"></li>
+							</ul>
+							<button id="resistanceMinus" class="fa fa-minus minus"></button>
+							<button id="resistanceAdd" class="fa fa-plus add"></button>
 						</span>
-						<!-- Can add and remove resistances onClick of plus or minus sign -->
-						<span id="resistanceAdd" class="fa fa-plus add"></span>
-						<span id="resistanceMinus" class="fa fa-minus minus"></span>
 					</div>
 				</fieldset>
 
 				<fieldset name="skills">
 					<div id="skills" class="appending_skills">
 						<label for="skills">Skills</label>
-						<span>
-							<input type="text" name="skill[]" placeholder="New Skill">
+						<span name="newSkills" id="newSkills" class="appended-items-container">
+							<ul id="skills-list" class="appended-items">
+								<li><input type="text" name="skills[]" placeholder="New Skill"></li>
+							</ul>
+							<button id="skillMinus" class="fa fa-minus minus"></button>
+							<button id="skillAdd" class="fa fa-plus add"></button>
 						</span>
-						<!-- Can add and remove skills onClick of plus or minus sign -->
-						<span id="skillAdd" class="fa fa-plus add"></span>
-						<span id="skillMinus" class="fa fa-minus minus"></span>
 					</div>
 				</fieldset>
 
-				<!-- <fieldset name="actions">
+				<fieldset name="actions">
 					<div id="actions" class="appending_actions">
 						<label for="actions">Actions</label>
-						<span>
-							<input type="text" name="action[]" placeholder="New Action">
-						</span> -->
-				<!-- Can add and remove actions onClick of plus or minus sign -->
-				<!-- <span id="actionAdd" class="fa fa-plus add"></span>
-						<span id="actionMinus" class="fa fa-minus minus"></span>
+						<span name="newActions" id="newActions" class="appended-items-container">
+							<ul id="actions-list" class="appended-items">
+								<li><input type="text" name="actions[]" placeholder="New Action"></li>
+							</ul>
+							<button id="actionMinus" class="fa fa-minus minus"></button>
+							<button id="actionAdd" class="fa fa-plus add"></button>
+						</span>
 					</div>
-				</fieldset> -->
+				</fieldset>
 
 				<fieldset name="inventorySection">
 					<div id="inventoryDiv" class="form-group">
