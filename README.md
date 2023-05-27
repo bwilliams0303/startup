@@ -62,19 +62,22 @@ Application appearance.
 * Consistent use fonts and colors.
 * Added test buttons for expiramental popups for Websocket to work with when developed.
 
+## JavaScript Deliverable
+
+* Login - When you press enter or the login button it takes you to the User's Creature Database page. Saves user's username to the localstorage.
+* Creature Creation - When you press the save button, it saves all of the informaiton on the creature and stores it into that specific user's database.
+  * Saves all data written by the user. certain HTML fields are created when plus or minus buttons are clicked (saved to an array, pretty cool if you ask me).
+* Userdatabase - users can see their saved creatures and click on the button to make a new creature. (clicking the navigation link to the creature creator works for this too).
+  * Creature edit - users can edit their saved craetures and save them back to the database where the database will be updated (no duplicates).
+  * creature delete - users can delete their creations from their database
+  * Creature Upload - When you press the upload button, it uploads the save of that creature to the real time forum where a toast is then displayed of the user's username, creation name, and level of the creature.
+* Forum - On the forum user's can see all the uploaded creatures from other users. They can choose to view the creature and save it to their own database.
+* WebSocket - will eventually be implemented into the javascript.
+
 View raw to see future deliverables
 
-<!-- ## JavaScript Deliverable
 
-App functionality.
-
-* Login - When you press enter or the login button it takes you to the User's Creature Database page.
-* Creature Creation - When you press the save button, it saves all of the informaiton on the creature and stores it into that specific user's database
-* Creature Upload - When you press the upload button, it uploads the save of that creature to the real time forum.
-* Database - Displays the user's saved creatures. Delete creatures. Load and edit preexisting creatures.
-* WebSocket - Upload's creatures to a real time forum where all other users can download.
-
-## Service Deliverable
+<!-- ## Service Deliverable
 
 HTTP service to host the frontend and provide backend for the web application.
 
