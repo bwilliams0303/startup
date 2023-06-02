@@ -74,19 +74,19 @@ Application appearance.
 * Forum - On the forum user's can see all the uploaded creatures from other users. They can choose to view the creature and save it to their own database.
 * WebSocket - will eventually be implemented into the javascript.
 
-View raw to see future deliverables
-
-
-<!-- ## Service Deliverable
+## Service Deliverable
 
 HTTP service to host the frontend and provide backend for the web application.
 
-* Node.js/Express HTTP service - in progress
-* Static middleware for frontend - in progress
+* Node.js/Express HTTP service.
+* Static middleware for frontend.
 * Backend service endpoints - Placeholders for login that stores the current user on the server.
-* Frontend calls service endpoints - in progress
+* Frontend calls service endpoints
+* (Couldn't quite figure out how to delete rows using this yet. Still in progress)
 
-## DB Deliverable
+View raw to see future deliverables
+
+<!-- ## DB Deliverable
 
 Stores and retrieves data from MongoDB.
 
