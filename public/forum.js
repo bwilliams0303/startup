@@ -47,40 +47,50 @@ function showToast(username, level, creatureName) {
 	toast.show();
 }
 
-function loadForum() {
+async function loadForum() {
 	let forumCreatures = [];
-	const creaturesText = localStorage.getItem('forum');
-	if (creaturesText) {
-		forumCreatures = JSON.parse(creaturesText);
-	}
+
+	try {
+		// Get the latest creature from the service
+		const response = await fetch('/api/forum');
+		const responseData = await response.json();
+		console.log('Response data:', responseData); // Log the response data for debugging
+		forumCreatures = responseData;
+	
+		// Save the currentUserCreatures in case we go offline in the future
+		localStorage.setItem('forum', JSON.stringify(forumCreatures));
+	  } catch {
+		// If there was an error then just use the last saved currentUserCreatures
+		const forumText = localStorage.getItem('forum');
+		if (forumText) {
+			forumCreatures = JSON.parse(forumText);
+		}
+	  }
+
+
+
 	const tableBody = document.querySelector("tbody");
 	tableBody.innerHTML = "";
 
 	forumCreatures.forEach((creature, i) => {
-		try {
-			parsedCreature = JSON.parse(creature);
-		} catch (error) {
-			console.error(`Error parsing creature at index ${i}:`, error);
-			return; // Skip this iteration if the creature is not a valid JSON string
-		}
 		const tableRow = document.createElement("tr");
 		tableRow.setAttribute("class", "table-light");
 
 		const level = document.createElement("th");
 		level.setAttribute("scope", "row");
-		level.textContent = JSON.parse(creature).level;
+		level.textContent = creature.level;
 		tableRow.appendChild(level);
 
 		const name = document.createElement("td");
-		name.textContent = JSON.parse(creature).name;
+		name.textContent = creature.name;
 		tableRow.appendChild(name);
 
 		const owner = document.createElement("td");
-		owner.textContent = JSON.parse(creature).owner;
+		owner.textContent = creature.owner;
 		tableRow.appendChild(owner);
 
 		const date = document.createElement("td");
-		date.textContent = JSON.parse(creature).createdDate;
+		date.textContent = creature.createdDate;
 		tableRow.appendChild(date);
 
 		const view = document.createElement("td");
@@ -90,7 +100,7 @@ function loadForum() {
 		viewButton.classList.add("fa", "fa-eye");
 		view.appendChild(viewButton);
 		viewButton.addEventListener("click", () => {
-			localStorage.setItem("loadCreature", JSON.parse(creature).creatureId);
+			localStorage.setItem("loadCreature", creature.creatureId);
 			window.location.href = "creature_creator.html";
 		});
 

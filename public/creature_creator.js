@@ -201,15 +201,28 @@ class Creature {
 		return randomID.toString();
 	}
 
-	loadCreature(stringId) {
-		console.log(stringId);
+	async loadCreature(stringId) {
 		let creatures = [];
-		const creaturesText = localStorage.getItem('creatures');
-		creatures = JSON.parse(creaturesText);
+
+		try {
+			// Get the latest creature from the service
+			const response = await fetch('/api/creatures');
+			creatures = await response.json();
+		
+			// Save the creatures in case we go offline in the future
+			localStorage.setItem('allCreatures', JSON.stringify(creatures));
+		  } catch {
+			// If there was an error then just use the last saved creatures
+			const creaturesText = localStorage.getItem('allCreatures');
+			if (creaturesText) {
+			  creatures = JSON.parse(creaturesText);
+			}
+		  }
+
 		let foundCreature = null;
 		creatures.forEach((creature) => {
-			if (JSON.parse(creature).creatureId == stringId) {
-				this.transferData(JSON.parse(creature));
+			if (creature.creatureId == stringId) {
+				this.transferData(creature);
 				this.reflectData();
 				console.log(creature);
 				foundCreature = creature;
@@ -291,9 +304,27 @@ class Creature {
 		this.reflectArrays();
 	}
 
-	saveCreature() {
+	async saveCreature() {
+		const savedCreature = JSON.stringify(this.updateCreature());
+		try {
+			const response = await fetch('/api/creature', {
+			  method: 'POST',
+			  headers: {'content-type': 'application/json'},
+			  body: savedCreature,
+			});
+	  
+			// Store what the service gave us as the creatures
+			const creatures = await response.json();
+			localStorage.setItem('allCreatures', JSON.stringify(creatures));
+		  } catch {
+			// If there was an error then just track creatures locally
+			this.saveCreatureLocal(savedCreature);
+		  }
+	}
+
+	saveCreatureLocal(savedCreature) {
 		let creatures = [];
-		const creaturesText = localStorage.getItem('creatures');
+		const creaturesText = localStorage.getItem('allCreatures');
 		if (creaturesText) {
 			creatures = JSON.parse(creaturesText);
 			// Check to see if this creature already exists and deletes it if it does
@@ -304,9 +335,9 @@ class Creature {
 				}
 			}
 		}
-		creatures.push(JSON.stringify(this.updateCreature()));
-		localStorage.setItem('creatures', JSON.stringify(creatures));
-		console.log(JSON.stringify(creatures));
+		creatures.push(savedCreature);
+		localStorage.setItem('allCreatures', JSON.stringify(creatures));
+		// console.log(JSON.stringify(creatures));
 	}
 
 	updateCreature() {
