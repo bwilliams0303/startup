@@ -22,12 +22,12 @@ let forumCollection;
 })();
 
 async function addCreature(creature) {
-    db.creatureCollection.replaceOne (
-    { creatureId: creature.creatureId },
-    creature,
+  const { creatureId, ...updatedCreature } = creature;
+  const result = await creatureCollection.updateOne(
+    { creatureId: creatureId },
+    { $set: updatedCreature },
     { upsert: true }
   );
-  const result = await creatureCollection.insertOne(creature);
   return result;
 }
 
@@ -37,9 +37,10 @@ function getAllCreatures() {
 }
 
 async function addToForum(creature) {
-  const result = await forumCollection.replaceOne(
-    { creatureId: creature.creatureId },
-    creature,
+  const { creatureId, ...updatedCreature } = creature;
+  const result = await forumCollection.updateOne(
+    { creatureId: creatureId },
+    { $set: updatedCreature },
     { upsert: true }
   );
   return result;
