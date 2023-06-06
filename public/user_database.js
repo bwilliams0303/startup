@@ -86,9 +86,11 @@ async function loadCurrentUserCreatures() {
 					const response = await fetch('/api/delete', {
 					method: 'POST',
 					headers: {'content-type': 'application/json'},
-					body: JSON.stringify(i),
+					body: JSON.stringify(creature.creatureId),
 					});
 
+					const deleteMessage = await response.json();
+					console.log(deleteMessage);
 				} catch {
 					deleteCreatureLocal(i);
 				}

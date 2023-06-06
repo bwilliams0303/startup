@@ -11,6 +11,7 @@
 
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -27,30 +28,33 @@ app.use(`/api`, apiRouter);
 
 // GetCreature
 apiRouter.get('/creatures', (_req, res) => {
+  const creatures = DB.getAllCreatures();
   res.send(creatures);
 });
 
 // SubmitCreature
 apiRouter.post('/creature', (req, res) => {
-  creatures = updateCreatures(req.body, creatures);
+  DB.addCreature(req.body);
+  const creatures = DB.getAllCreatures();
   res.send(creatures);
 });
 
 // GetForum
 apiRouter.get('/forum', (_req, res) => {
+  const forum = DB.getForum();
   res.send(forum);
 });
 
 // UploadCreature
 apiRouter.post('/upload', (req, res) => {
-  forum = updateForum(req.body, forum);
+  DB.addToForum(req.body);
+  const forum = DB.getForum();
   res.send(forum);
 });
 
 apiRouter.post('/delete', (req, res) => {
   console.log('Delete Request Body:', req.body); // Add this line to log the request body
-  const index = req.body;
-  deletePersonalCreature(index);
+  DB.deleteCreature(req.body);
   res.sendStatus(200);
 });
 
@@ -64,35 +68,35 @@ app.listen(port, () => {
 });
 
 
-let creatures = [];
-let forum = [];
-function updateCreatures(newCreature, creatures) {
-  const existingCreatureIndex = creatures.findIndex(
-    (creature) => creature.creatureId === newCreature.creatureId
-  );
+// let creatures = [];
+// let forum = [];
+// function updateCreatures(newCreature, creatures) {
+//   const existingCreatureIndex = creatures.findIndex(
+//     (creature) => creature.creatureId === newCreature.creatureId
+//   );
 
-  if (existingCreatureIndex !== -1) {
-    creatures[existingCreatureIndex] = newCreature;
-  } else {
-    creatures.push(newCreature);
-  }
+//   if (existingCreatureIndex !== -1) {
+//     creatures[existingCreatureIndex] = newCreature;
+//   } else {
+//     creatures.push(newCreature);
+//   }
 
-  return creatures;
-}
+//   return creatures;
+// }
 
-function updateForum(uploadedCreature, forum) {
-  for (var i = 0; i < forum.length; i++) {
-    if (forum[i].creatureId == uploadedCreature.creatureId) {
-      forum.splice(i, 1);
-      break;
-    }
-  }
+// function updateForum(uploadedCreature, forum) {
+//   for (var i = 0; i < forum.length; i++) {
+//     if (forum[i].creatureId == uploadedCreature.creatureId) {
+//       forum.splice(i, 1);
+//       break;
+//     }
+//   }
 
-  forum.push(uploadedCreature);
-  return forum;
-}
+//   forum.push(uploadedCreature);
+//   return forum;
+// }
 
-function deletePersonalCreature(index) {
-  creatures.splice(index, 1);
-}
+// function deletePersonalCreature(index) {
+//   creatures.splice(index, 1);
+// }
 
