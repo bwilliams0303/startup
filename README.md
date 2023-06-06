@@ -84,17 +84,20 @@ HTTP service to host the frontend and provide backend for the web application.
 * Frontend calls service endpoints
 * (Couldn't quite figure out how to delete rows using this yet. Still in progress)
 
-View raw to see future deliverables
-
-<!-- ## DB Deliverable
+## DB Deliverable
 
 Stores and retrieves data from MongoDB.
 
-* MongoDB Atlas database created - in progress
-* Endpoints for data - in progress
-* Stores data in MongoDB - in progress
+* MongoDB Atlas database created
+  * Creature Cluster created
+  * Forum cluster created
+* Endpoints for data
+* Stores and calls data in MongoDB
+* (Deletion from MongoDB is still in progress)
 
-** Login Deliverable
+View raw to see future deliverables
+
+<!-- ** Login Deliverable
 
 User registration and authentication.
 
