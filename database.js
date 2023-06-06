@@ -3,21 +3,26 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('startup');
-const creatureCollection = db.collection('AllCreatures');
-const forumCollection = db.collection('CreatureForum');
+let db;
+let creatureCollection;
+let forumCollection;
 
-// This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
-  await client.connect();
-  await db.command({ ping: 1 });
-})().catch((ex) => {
-  console.log(`Unable to connect to database with ${url} because ${ex.message}`);
-  process.exit(1);
-});
+  try {
+    await client.connect();
+    db = client.db('startup');
+    creatureCollection = db.collection('AllCreatures');
+    forumCollection = db.collection('CreatureForum');
+    await db.command({ ping: 1 });
+    console.log('Connected to the database');
+  } catch (error) {
+    console.log(`Unable to connect to the database with ${url} because ${error.message}`);
+    process.exit(1);
+  }
+})();
 
 async function addCreature(creature) {
-  db.creatureCollection.replaceOne (
+    db.creatureCollection.replaceOne (
     { creatureId: creature.creatureId },
     creature,
     { upsert: true }
@@ -32,12 +37,11 @@ function getAllCreatures() {
 }
 
 async function addToForum(creature) {
-  db.forumCollection.replaceOne (
+  const result = await forumCollection.replaceOne(
     { creatureId: creature.creatureId },
     creature,
     { upsert: true }
   );
-  const result = await forumCollection.insertOne(creature);
   return result;
 }
 
@@ -46,10 +50,11 @@ function getForum() {
   return cursor.toArray();
 }
 
-function deleteCreature(creatureId) {
-  db.creatureCollection.remove(
+async function deleteCreature(creatureId) {
+  const result = await creatureCollection.deleteOne(
     { creatureId: creatureId }
-  )
+  );
+  return result;
 }
 
 module.exports = { addCreature, getAllCreatures, deleteCreature, addToForum, getForum };

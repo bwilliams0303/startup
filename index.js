@@ -27,28 +27,28 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // GetCreature
-apiRouter.get('/creatures', (_req, res) => {
-  const creatures = DB.getAllCreatures();
+apiRouter.get('/creatures', async (_req, res) => {
+  const creatures = await DB.getAllCreatures();
   res.send(creatures);
 });
 
 // SubmitCreature
-apiRouter.post('/creature', (req, res) => {
+apiRouter.post('/creature', async (req, res) => {
   DB.addCreature(req.body);
-  const creatures = DB.getAllCreatures();
+  const creatures = await DB.getAllCreatures();
   res.send(creatures);
 });
 
 // GetForum
-apiRouter.get('/forum', (_req, res) => {
-  const forum = DB.getForum();
+apiRouter.get('/forum', async (_req, res) => {
+  const forum = await DB.getForum();
   res.send(forum);
 });
 
 // UploadCreature
-apiRouter.post('/upload', (req, res) => {
+apiRouter.post('/upload', async (req, res) => {
   DB.addToForum(req.body);
-  const forum = DB.getForum();
+  const forum = await DB.getForum();
   res.send(forum);
 });
 
