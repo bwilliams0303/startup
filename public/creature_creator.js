@@ -796,3 +796,10 @@ actionsMinus.addEventListener("click", function (event) {
 	actionsList.removeChild(actionsList.lastElementChild);
 	creature.actions.pop();
 })
+
+function logout() {
+	localStorage.removeItem('userName');
+	fetch(`/api/auth/logout`, {
+	  method: 'delete',
+	}).then(() => (window.location.href = 'index.html'));
+}
