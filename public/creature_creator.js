@@ -306,20 +306,22 @@ class Creature {
 
 	async saveCreature() {
 		const savedCreature = JSON.stringify(this.updateCreature());
-		try {
-			const response = await fetch('/api/creature', {
-			  method: 'POST',
-			  headers: {'content-type': 'application/json'},
-			  body: savedCreature,
-			});
-	  
-			// Store what the service gave us as the creatures
-			const creatures = await response.json();
-			localStorage.setItem('allCreatures', JSON.stringify(creatures));
-		  } catch {
-			// If there was an error then just track creatures locally
-			this.saveCreatureLocal(savedCreature);
-		  }
+		if(this.getOwnerName !== "Unknown") {
+			try {
+				const response = await fetch('/api/creature', {
+					method: 'POST',
+					headers: {'content-type': 'application/json'},
+					body: savedCreature,
+				});
+			
+				// Store what the service gave us as the creatures
+				const creatures = await response.json();
+				localStorage.setItem('allCreatures', JSON.stringify(creatures));
+			} catch {
+				// If there was an error then just track creatures locally
+				this.saveCreatureLocal(savedCreature);
+			}
+		}
 	}
 
 	saveCreatureLocal(savedCreature) {
