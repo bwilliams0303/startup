@@ -95,18 +95,18 @@ Stores and retrieves data from MongoDB.
 * Stores and calls data in MongoDB
 * (Deletion from MongoDB is still in progress)
 
-View raw to see future deliverables
-
-<!-- ** Login Deliverable
+** Login Deliverable
 
 User registration and authentication.
 
 * User registration - Creates a new account in the database.
 * existing user - Verifies the user's name and password from data stored in the database
-* Use MongoDB to store credentials - done!
-* Restricts functionality - You cannot vote until you have logged in.
+* Use MongoDB to store credentials.
+* Restricts functionality - Unknown creatures will be saved but you won't be able to see your personalized database of creatures.
 
-## WebSocket Deliverable
+View raw to see future deliverables
+
+<!-- ## WebSocket Deliverable
 
 Enables realtime reporting of uploaded creatures from other users.
 
