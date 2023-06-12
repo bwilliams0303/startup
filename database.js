@@ -1,4 +1,6 @@
 const { MongoClient } = require('mongodb');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
@@ -6,6 +8,7 @@ const client = new MongoClient(url);
 let db;
 let creatureCollection;
 let forumCollection;
+let userCollection;
 
 (async function testConnection() {
   try {
@@ -13,6 +16,7 @@ let forumCollection;
     db = client.db('startup');
     creatureCollection = db.collection('AllCreatures');
     forumCollection = db.collection('CreatureForum');
+    userCollection = db.collection('Users');
     await db.command({ ping: 1 });
     console.log('Connected to the database');
   } catch (error) {
@@ -20,6 +24,28 @@ let forumCollection;
     process.exit(1);
   }
 })();
+
+function getUser(userName) {
+  return userCollection.findOne({ username: userName });
+}
+
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
+async function createUser(userName, password) {
+  // Hash the password before we insert it into the database
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    username: userName,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await userCollection.insertOne(user);
+
+  return user;
+}
 
 async function addCreature(creature) {
   const { creatureId, ...updatedCreature } = creature;
@@ -58,4 +84,4 @@ async function deleteCreature(creatureId) {
   return result;
 }
 
-module.exports = { addCreature, getAllCreatures, deleteCreature, addToForum, getForum };
+module.exports = { getUser, getUserByToken, createUser, addCreature, getAllCreatures, deleteCreature, addToForum, getForum };
