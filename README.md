@@ -104,18 +104,18 @@ User registration and authentication.
 * Use MongoDB to store credentials.
 * Restricts functionality - Unknown creatures will be saved but you won't be able to see your personalized database of creatures.
 
-View raw to see future deliverables
-
-<!-- ## WebSocket Deliverable
+## WebSocket Deliverable
 
 Enables realtime reporting of uploaded creatures from other users.
 
-* Backend listens for WebSocket connection - in progress
-* Frontend makes WebSocket connection - in progress
-* Data sent over WebSocket connection - in progress
-* WebSocket data displayed - Display all user uploaded creatures on the forum in realtime
+* Backend listens for WebSocket connection.
+* Frontend makes WebSocket connection.
+* Data sent over WebSocket connection.
+* WebSocket data displayed - Display all user uploaded creatures on the forum in realtime.
 
-## React Deliverable
+View raw to see future deliverables
+
+<!-- ## React Deliverable
 
 Ports the application over to React.
 
