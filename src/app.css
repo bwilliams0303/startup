@@ -1,0 +1,22 @@
+html {
+	height: 100%;
+  }
+	
+.body {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #f5e5bf;
+}
+
+footer {
+	background: #707070;
+	color: white;
+}
+
+.container {
+	width: auto;
+	max-width: 680px;
+	padding: 0 15px;
+}
